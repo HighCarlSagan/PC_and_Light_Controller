@@ -1,10 +1,3 @@
-cd /home/carl/Projects/Hardware/PC_and_Light_Controller
-
-nano LICENSE
-```
-
-**Paste this:**
-```
 CERN Open Hardware Licence Version 2 - Permissive
 
 Preamble
