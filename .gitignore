@@ -1,0 +1,100 @@
+# ============================================
+# Secrets - NEVER commit these
+# ============================================
+**/secrets.h
+firmware/*/include/secrets.h
+
+# ============================================
+# PlatformIO
+# ============================================
+**/.pio/
+**/.vscode/
+**/.pioenvs/
+**/.piolibdeps/
+**/lib/readme.txt
+
+# ============================================
+# KiCad
+# ============================================
+# Backup files
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*-backups/
+_autosave-*
+
+# Cache and temporary files
+fp-info-cache
+*.lck
+~*.tmp
+*.bak
+*.swp
+
+# Export folder (optional - uncomment if you don't want to track exports)
+# hardware/exports/
+
+# ============================================
+# FreeCAD
+# ============================================
+*.FCStd1
+*.FCStd2
+*.FCStd~*
+
+# ============================================
+# General
+# ============================================
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+Desktop.ini
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Compiled files
+*.o
+*.elf
+*.bin
+*.hex
+
+# Logs
+*.log
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+
+# Node modules (if you use web interface later)
+node_modules/
+
+# ============================================
+# Project Specific
+# ============================================
+# Test files and temporary work
+test/
+tmp/
+temp/
+
+# Local notes
+TODO.local
+NOTES.local
