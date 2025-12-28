@@ -1,32 +1,35 @@
 # PC & Light Controller
 
-ESP32-based remote control system for PC power management and room lighting via Tailscale.
+ESP32-based remote control system for PC power management and room lighting via Telegram Bot.
 
 ![Board Render](docs/images/board_render.png)
 
 ## Features
 
 - **3x TPS259807ONRGER eFuse Switches**: DC load switching for IKEA LED lights (5V)
-- **Motor Control**: Automated UPS power button actuation
-- **Remote Access**: Tailscale integration for secure remote control via SSH
-- **Custom PCB**: 4-layer board designed in KiCad
+- **Servo Motor Control**: Automated UPS power button actuation (SG90/MG90S)
+- **Remote Access**: Telegram Bot integration for secure remote control from anywhere
+- **Dual ESP32 Design**: Separate controllers for UPS and lighting
+- **Custom PCB**: 4-layer boards designed in KiCad (planned)
 - **Power**: Powered by custom 60W dual-rail PSU (3.3V/5V @ 6A each)
 
 ## Current Setup
 
 ### Hardware
-- **UPS Controller:** ESP32 on GPIO 13 (servo for UPS button)
-- **Lights Controller:** ESP32 on GPIO 25, 26, 27 (3 LED switches)
+- **UPS Controller ESP32**: Controls servo motor for UPS button (GPIO 13)
+- **Lights Controller ESP32**: Controls 3 LED switches (GPIO 25, 26, 27)
 
 ### Network
 - WiFi: Peela_Ghar
-- UPS Controller IP: 192.168.0.84 (when testing)
-- Lights Controller IP: 192.168.0.84 (when testing)
+- UPS Controller IP: 192.168.0.84
+- Lights Controller IP: 192.168.0.84 (when testing on same board)
 
 ### Telegram Bot
-- Bot controls both ESP32 devices
+- Single bot controls both ESP32 devices
+- Command prefixes: `/ups_*` for UPS, `/lights_*` for lights
 - Commands: See [docs/commands/TELEGRAM_COMMANDS.md](docs/commands/TELEGRAM_COMMANDS.md)
 - Works from anywhere via Telegram (no port forwarding needed)
+- Security: Chat ID verification (only authorized user can control)
 
 ## Quick Start
 
@@ -36,8 +39,10 @@ ESP32-based remote control system for PC power management and room lighting via 
 2. **Open Telegram** on your phone
 3. **Send commands** to your bot:
    - `/ups_press` - Press UPS button
+   - `/ups_status` - Get UPS controller status
    - `/lights_1_on` - Turn on light 1
-   - `/lights_status` - Check all lights
+   - `/lights_all_off` - Turn all lights off
+   - `/lights_status` - Check all lights status
 
 ### Flashing Firmware
 
@@ -55,150 +60,125 @@ pio run --target upload
 pio device monitor
 ```
 
-## Testing
+**Note:** Hold BOOT button on ESP32 when you see "Connecting..." during upload.
 
-Both controllers tested and working:
-- ✅ WiFi connection
-- ✅ Telegram bot communication
-- ✅ Command parsing and execution
-- ✅ Security (Chat ID verification)
-- ✅ Both ESP32s can run simultaneously with same bot
+### First Time Setup
+
+1. **Create Telegram Bot**
+   - Message @BotFather on Telegram
+   - Send `/newbot` and follow instructions
+   - Save the bot token
+
+2. **Get Your Chat ID**
+   - Message @userinfobot on Telegram
+   - Note your Chat ID
+
+3. **Configure Secrets**
+```bash
+   cd firmware/ups-controller/include
+   cp secrets.h.example secrets.h
+   nano secrets.h
+   # Add your WiFi credentials, bot token, and Chat ID
+```
+
+4. **Flash Both ESP32s** (see Flashing Firmware above)
 
 ## Hardware Specifications
 
 ### Main Components
-- **MCU**: ESP32 WiFi Module
-- **Load Switches**: 3x TPS259807ONRGER eFuse (adjustable current limit)
-- **Motor Driver**: [TBD - specify motor driver IC]
-- **Power Input**: 5V from 60W PSU
-- **PCB**: 4-layer, [dimensions TBD]
+
+| Component | Specification | Purpose |
+|-----------|---------------|---------|
+| MCU | ESP32 WiFi Module (2x) | Main controllers |
+| Load Switches | 3x TPS259807ONRGER eFuse | LED switching (6A max each) |
+| Servo Motor | SG90 or MG90S | UPS button actuation |
+| Power Supply | 60W Dual-Rail PSU (5V/3.3V @ 6A) | System power |
+| PCB | 4-layer (planned) | Custom board |
 
 ### Pinout
+
+**UPS Controller ESP32:**
 ```
-ESP32 GPIO Assignments:
-- GPIO X: LED Switch 1 (TPS259807 EN pin)
-- GPIO X: LED Switch 2 (TPS259807 EN pin)
-- GPIO X: LED Switch 3 (TPS259807 EN pin)
-- GPIO X: Motor Control (PWM/Direction)
-- GPIO X: Motor Control (PWM/Direction)
+GPIO 2  : Built-in LED (status indicator)
+GPIO 13 : Servo PWM signal
+VIN     : 5V from PSU
+GND     : Common ground
+```
+
+**Lights Controller ESP32:**
+```
+GPIO 2  : Built-in LED (status indicator)
+GPIO 25 : TPS259807 #1 Enable (LED switch 1)
+GPIO 26 : TPS259807 #2 Enable (LED switch 2)
+GPIO 27 : TPS259807 #3 Enable (LED switch 3)
+VIN     : 5V from PSU
+GND     : Common ground
 ```
 
 ### Schematic
-[Download PDF](hardware/exports/schematic.pdf)
+
+[Download PDF](hardware/exports/schematic.pdf) (Coming soon)
 
 ## Firmware Architecture
 
 ### Technology Stack
-- **Framework**: Arduino/ESP-IDF (PlatformIO)
-- **Networking**: WiFi + Tailscale client on host network
-- **Protocol**: Simple TCP socket server or HTTP API
+
+- **Framework**: Arduino (via PlatformIO)
+- **Networking**: WiFi + Telegram Bot API
 - **Libraries**:
   - WiFi.h (ESP32 WiFi)
-  - WebServer.h or AsyncTCP (command interface)
+  - WiFiClientSecure.h (HTTPS for Telegram)
+  - UniversalTelegramBot (Telegram API wrapper)
+  - ESP32Servo (Servo motor control)
+  - ArduinoJson (JSON parsing)
 
 ### Command Interface
-The ESP32 runs a simple TCP server accessible via Tailscale IP. See [Command API](docs/commands/API.md) for full reference.
 
-Quick examples:
-```bash
-# From phone terminal via Tailscale
-ssh user@arch-pc "echo 'LED1_ON' | nc <esp32-tailscale-ip> 8888"
-ssh user@arch-pc "echo 'LED2_OFF' | nc <esp32-tailscale-ip> 8888"
-ssh user@arch-pc "echo 'MOTOR_PRESS' | nc <esp32-tailscale-ip> 8888"
-```
+Both ESP32s poll the same Telegram bot every 1 second. Each responds only to its command prefix:
 
-## Getting Started
+**UPS Controller Commands:**
+- `/ups_press` - Press UPS power button
+- `/ups_status` - Get controller status
+- `/ups_help` - Show help
 
-### Hardware Assembly
-See [ASSEMBLY.md](docs/ASSEMBLY.md) for detailed build instructions.
+**Lights Controller Commands:**
+- `/lights_1_on`, `/lights_1_off` - Control light 1
+- `/lights_2_on`, `/lights_2_off` - Control light 2
+- `/lights_3_on`, `/lights_3_off` - Control light 3
+- `/lights_all_on`, `/lights_all_off` - Control all lights
+- `/lights_status` - Get all lights status
+- `/lights_help` - Show help
 
-### Firmware Setup
+See [TELEGRAM_COMMANDS.md](docs/commands/TELEGRAM_COMMANDS.md) for complete reference.
 
-1. **Install PlatformIO**:
-```bash
-# Via package manager or VSCode extension
-yay -S platformio-core
-```
+## Testing Status
 
-2. **Configure WiFi credentials**:
-```bash
-cp firmware/include/config.h.example firmware/include/config.h
-# Edit config.h with your WiFi SSID/password
-```
+**Firmware:** ✅ Complete and Tested
+- ✅ WiFi connection
+- ✅ Telegram bot communication (both ESP32s)
+- ✅ Command parsing and execution
+- ✅ Security (Chat ID verification)
+- ✅ Command prefix isolation
+- ✅ Remote control from anywhere via Telegram
 
-3. **Upload firmware**:
-```bash
-cd firmware
-pio run --target upload
-```
-
-4. **Get ESP32 IP**:
-```bash
-pio device monitor
-# Note the IP address printed on boot
-```
-
-5. **Add to Tailscale network**:
-   - Ensure ESP32 is on same LAN as Tailscale subnet router
-   - Access via your Arch PC's Tailscale connection
+**Hardware:** 🔄 In Progress
+- ⏳ Awaiting servo motor (SG90)
+- ⏳ Awaiting TPS259807 chips
+- ⏳ PCB design (KiCad schematic)
+- ⏳ PCB manufacturing
+- ⏳ Final assembly
 
 ## PCB Manufacturing
 
 ### Gerber Files
-Gerbers for manufacturing are in [hardware/exports/gerbers/](hardware/exports/gerbers/)
+Gerbers for manufacturing will be in [hardware/exports/gerbers/](hardware/exports/gerbers/) (Coming soon)
 
 ### BOM
-See [hardware/bom/bom.csv](hardware/bom/bom.csv) for complete parts list.
+See [hardware/bom/bom.csv](hardware/bom/bom.csv) for complete parts list (Coming soon)
 
 ### Recommended Manufacturers
 - JLCPCB (4-layer, ENIG finish recommended)
 - PCBWay
-
-## Usage
-
-### Basic Commands
-
-#### LED Control
-```bash
-# Turn on LED strip 1
-echo 'LED1_ON' | nc <esp32-ip> 8888
-
-# Turn off LED strip 2
-echo 'LED2_OFF' | nc <esp32-ip> 8888
-
-# Toggle LED strip 3
-echo 'LED3_TOGGLE' | nc <esp32-ip> 8888
-```
-
-#### UPS Control
-```bash
-# Actuate UPS power button
-echo 'MOTOR_PRESS' | nc <esp32-ip> 8888
-```
-
-### Remote Control via Phone
-Since you use Tailscale to control your Arch system, you can proxy commands:
-```bash
-# SSH into Arch PC from phone
-ssh carl@m-arch
-
-# Then send commands to ESP32
-echo 'LED1_ON' | nc 192.168.x.x 8888
-```
-
-Or create shell scripts on your Arch PC for one-command execution:
-```bash
-# ~/bin/lights-on
-#!/bin/bash
-echo 'LED1_ON' | nc 192.168.x.x 8888
-echo 'LED2_ON' | nc 192.168.x.x 8888
-echo 'LED3_ON' | nc 192.168.x.x 8888
-```
-
-Then from phone:
-```bash
-ssh carl@m-arch ~/bin/lights-on
-```
 
 ## Development Workflow
 
@@ -212,9 +192,9 @@ cd hardware/kicad
 
 ### Code → Flash
 ```bash
-cd firmware
+cd firmware/ups-controller  # or lights-controller
 pio run --target upload
-pio device monitor  # View serial output
+pio device monitor
 ```
 
 ### Update Documentation
@@ -229,31 +209,69 @@ git push
 
 ## Project Status
 
-- [ ] Schematic design
+**Software/Firmware:**
+- [x] Telegram bot integration
+- [x] UPS controller firmware
+- [x] Lights controller firmware
+- [x] Command parsing and security
+- [x] Testing and validation
+- [x] Documentation
+
+**Hardware:**
+- [ ] Schematic design (KiCad)
 - [ ] PCB layout
+- [ ] Order components
 - [ ] Order PCBs
-- [ ] Firmware scaffold
-- [ ] Motor control implementation
-- [ ] Switch control implementation
-- [ ] Network interface
 - [ ] Assembly
-- [ ] Testing
-- [ ] Documentation
+- [ ] Hardware testing
+- [ ] Enclosure design (FreeCAD)
+
+## Repository Structure
+```
+PC_and_Light_Controller/
+├── firmware/
+│   ├── ups-controller/        # UPS ESP32 firmware
+│   │   ├── src/main.cpp
+│   │   ├── include/
+│   │   │   ├── config.h
+│   │   │   ├── secrets.h         (gitignored)
+│   │   │   └── secrets.h.example
+│   │   └── platformio.ini
+│   └── lights-controller/     # Lights ESP32 firmware
+│       ├── src/main.cpp
+│       ├── include/
+│       │   ├── config.h
+│       │   ├── secrets.h         (gitignored)
+│       │   └── secrets.h.example
+│       └── platformio.ini
+├── hardware/
+│   ├── kicad/                 # KiCad schematic & PCB
+│   ├── exports/               # Gerbers, PDFs, renders
+│   └── bom/                   # Bill of materials
+├── docs/
+│   ├── commands/
+│   │   └── TELEGRAM_COMMANDS.md
+│   └── images/
+├── .gitignore
+├── LICENSE
+└── README.md
+```
 
 ## Photos
 
-### Board Assembly
-![Top View](docs/images/board_top.jpg)
-![Bottom View](docs/images/board_bottom.jpg)
+*Coming soon after hardware assembly*
 
-### In Action
-![Setup](docs/images/setup_diagram.png)
+## Security
+
+- **Chat ID Verification**: Only authorized Telegram user can send commands
+- **No Port Forwarding**: Telegram handles all networking securely
+- **HTTPS**: All communication with Telegram uses TLS encryption
+- **Secrets Management**: Credentials stored in gitignored `secrets.h` files
 
 ## License
 
-Hardware: [CERN-OHL-P v2](LICENSE)
-
-Firmware: MIT License (to be added)
+- **Hardware**: [CERN-OHL-P v2](LICENSE)
+- **Firmware**: MIT License
 
 ## Contributing
 
@@ -269,4 +287,4 @@ Part of my home automation & hardware design projects. Check out my other repos:
 
 ---
 
-**Note**: This board interfaces with mains-powered equipment (UPS). Ensure proper isolation and safety measures during installation.
+**⚠️ Safety Note**: This system interfaces with mains-powered equipment (UPS). Ensure proper isolation and safety measures during installation.
