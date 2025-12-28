@@ -12,6 +12,58 @@ ESP32-based remote control system for PC power management and room lighting via 
 - **Custom PCB**: 4-layer board designed in KiCad
 - **Power**: Powered by custom 60W dual-rail PSU (3.3V/5V @ 6A each)
 
+## Current Setup
+
+### Hardware
+- **UPS Controller:** ESP32 on GPIO 13 (servo for UPS button)
+- **Lights Controller:** ESP32 on GPIO 25, 26, 27 (3 LED switches)
+
+### Network
+- WiFi: Peela_Ghar
+- UPS Controller IP: 192.168.0.84 (when testing)
+- Lights Controller IP: 192.168.0.84 (when testing)
+
+### Telegram Bot
+- Bot controls both ESP32 devices
+- Commands: See [docs/commands/TELEGRAM_COMMANDS.md](docs/commands/TELEGRAM_COMMANDS.md)
+- Works from anywhere via Telegram (no port forwarding needed)
+
+## Quick Start
+
+### Using the Controllers
+
+1. **Power on ESP32s** (via USB or 60W PSU when available)
+2. **Open Telegram** on your phone
+3. **Send commands** to your bot:
+   - `/ups_press` - Press UPS button
+   - `/lights_1_on` - Turn on light 1
+   - `/lights_status` - Check all lights
+
+### Flashing Firmware
+
+**UPS Controller:**
+```bash
+cd firmware/ups-controller
+pio run --target upload
+pio device monitor
+```
+
+**Lights Controller:**
+```bash
+cd firmware/lights-controller
+pio run --target upload
+pio device monitor
+```
+
+## Testing
+
+Both controllers tested and working:
+- ✅ WiFi connection
+- ✅ Telegram bot communication
+- ✅ Command parsing and execution
+- ✅ Security (Chat ID verification)
+- ✅ Both ESP32s can run simultaneously with same bot
+
 ## Hardware Specifications
 
 ### Main Components
