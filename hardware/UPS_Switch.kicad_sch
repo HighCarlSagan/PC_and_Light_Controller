@@ -6344,7 +6344,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 308.61 200.66 0)
 			(effects
 				(font
@@ -6407,6 +6407,15 @@
 				(hide yes)
 			)
 		)
+		(property "Vendor Part Number" ""
+			(at 308.61 200.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e9645681-3713-45ad-9910-a6d5a6dbdadd")
 		)
@@ -6447,7 +6456,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 339.09 191.008 90)
 			(effects
 				(font
@@ -6456,7 +6465,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.te.com/usa-en/product-2176177-3.datasheet.pdf"
 			(at 339.09 189.23 0)
 			(effects
 				(font
@@ -6465,7 +6474,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "220 Ohms ±1% 0.2W, 1/5W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thick Film"
 			(at 339.09 189.23 0)
 			(effects
 				(font
@@ -6474,7 +6483,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "CRGH0603F220R"
 			(at 339.09 189.23 90)
 			(effects
 				(font
@@ -6492,7 +6501,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/te-connectivity-passive-product/CRGH0603F220R/7495060"
+			(at 339.09 189.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "TE Connectivity Passive Product"
+			(at 339.09 189.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "8"
+			(at 339.09 189.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "1712-CRGH0603F220RCT-ND"
 			(at 339.09 189.23 90)
 			(effects
 				(font
@@ -6676,7 +6712,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 85.09 200.66 0)
 			(effects
 				(font
@@ -6731,6 +6767,15 @@
 			)
 		)
 		(property "Vendor Link" ""
+			(at 85.09 200.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" ""
 			(at 85.09 200.66 90)
 			(effects
 				(font
@@ -6848,7 +6893,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-6-5.08_1x06_P5.08mm_Horizontal"
 			(at 326.39 63.5 0)
 			(effects
 				(font
@@ -6894,6 +6939,15 @@
 			)
 		)
 		(property "Vendor Link" ""
+			(at 326.39 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" ""
 			(at 326.39 63.5 0)
 			(effects
 				(font
@@ -6956,7 +7010,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "ESP32_Devkit_V1:WCAP-ASLI_6.3X5.5_DXL_"
 			(at 305.7652 68.58 0)
 			(effects
 				(font
@@ -6965,7 +7019,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.we-online.com/components/products/datasheet/865080343009.pdf"
 			(at 304.8 64.77 0)
 			(effects
 				(font
@@ -6974,7 +7028,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Polarized capacitor"
+		(property "Description" "100 µF 16 V Aluminum Electrolytic Capacitors Radial, Can - SMD 2000 Hrs @ 105°C"
 			(at 304.8 64.77 0)
 			(effects
 				(font
@@ -6983,7 +7037,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "865080343009"
 			(at 304.8 64.77 0)
 			(effects
 				(font
@@ -7001,7 +7055,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/w%C3%BCrth-elektronik/865080343009/5728014"
+			(at 304.8 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Würth Elektronik"
+			(at 304.8 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "24"
+			(at 304.8 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "732-8419-1-ND"
 			(at 304.8 64.77 0)
 			(effects
 				(font
@@ -7042,7 +7123,7 @@
 				)
 			)
 		)
-		(property "Value" "1k_0.21W_0603"
+		(property "Value" "1k_0.2W_0603"
 			(at 239.014 61.214 90)
 			(effects
 				(font
@@ -7050,7 +7131,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 238.76 65.278 90)
 			(effects
 				(font
@@ -7059,7 +7140,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf"
 			(at 238.76 63.5 0)
 			(effects
 				(font
@@ -7068,7 +7149,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "1 kOhms ±0.1% 0.2W, 1/5W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thick Film"
 			(at 238.76 63.5 0)
 			(effects
 				(font
@@ -7077,7 +7158,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "ERJ-PB3B1001V"
 			(at 238.76 63.5 90)
 			(effects
 				(font
@@ -7095,7 +7176,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/panasonic-electronic-components/ERJ-PB3B1001V/6212755"
+			(at 238.76 63.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Panasonic Electronic Components"
+			(at 238.76 63.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "14"
+			(at 238.76 63.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "P19972CT-ND"
 			(at 238.76 63.5 90)
 			(effects
 				(font
@@ -7147,7 +7255,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-6-5.08_1x06_P5.08mm_Horizontal"
 			(at 326.39 90.17 0)
 			(effects
 				(font
@@ -7193,6 +7301,15 @@
 			)
 		)
 		(property "Vendor Link" ""
+			(at 326.39 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" ""
 			(at 326.39 90.17 0)
 			(effects
 				(font
@@ -7517,7 +7634,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 229.87 191.008 90)
 			(effects
 				(font
@@ -7526,7 +7643,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.te.com/usa-en/product-2176177-3.datasheet.pdf"
 			(at 229.87 189.23 0)
 			(effects
 				(font
@@ -7535,7 +7652,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "220 Ohms ±1% 0.2W, 1/5W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thick Film"
 			(at 229.87 189.23 0)
 			(effects
 				(font
@@ -7544,7 +7661,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "CRGH0603F220R"
 			(at 229.87 189.23 90)
 			(effects
 				(font
@@ -7562,7 +7679,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/te-connectivity-passive-product/CRGH0603F220R/7495060"
+			(at 229.87 189.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "TE Connectivity Passive Product"
+			(at 229.87 189.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "8"
+			(at 229.87 189.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "1712-CRGH0603F220RCT-ND"
 			(at 229.87 189.23 90)
 			(effects
 				(font
@@ -7669,7 +7813,7 @@
 				)
 			)
 		)
-		(property "Value" "1k_0.1W_0603"
+		(property "Value" "1k_0.2W_0603"
 			(at 81.28 190.5 90)
 			(effects
 				(font
@@ -7677,7 +7821,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 86.868 190.5 90)
 			(effects
 				(font
@@ -7686,7 +7830,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf"
 			(at 85.09 190.5 0)
 			(effects
 				(font
@@ -7695,7 +7839,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "1 kOhms ±0.1% 0.2W, 1/5W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thick Film"
 			(at 85.09 190.5 0)
 			(effects
 				(font
@@ -7704,7 +7848,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "ERJ-PB3B1001V"
 			(at 85.09 190.5 90)
 			(effects
 				(font
@@ -7722,7 +7866,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/panasonic-electronic-components/ERJ-PB3B1001V/6212755"
+			(at 85.09 190.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Panasonic Electronic Components"
+			(at 85.09 190.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "14"
+			(at 85.09 190.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "P19972CT-ND"
 			(at 85.09 190.5 90)
 			(effects
 				(font
@@ -7895,7 +8066,7 @@
 				)
 			)
 		)
-		(property "Value" "1k_0.1W_0603"
+		(property "Value" "1k_0.2W_0603"
 			(at 195.58 190.5 90)
 			(effects
 				(font
@@ -7903,7 +8074,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 201.168 190.5 90)
 			(effects
 				(font
@@ -7912,7 +8083,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf"
 			(at 199.39 190.5 0)
 			(effects
 				(font
@@ -7921,7 +8092,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "1 kOhms ±0.1% 0.2W, 1/5W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thick Film"
 			(at 199.39 190.5 0)
 			(effects
 				(font
@@ -7930,7 +8101,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "ERJ-PB3B1001V"
 			(at 199.39 190.5 90)
 			(effects
 				(font
@@ -7948,7 +8119,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/panasonic-electronic-components/ERJ-PB3B1001V/6212755"
+			(at 199.39 190.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Panasonic Electronic Components"
+			(at 199.39 190.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "14"
+			(at 199.39 190.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "P19972CT-ND"
 			(at 199.39 190.5 90)
 			(effects
 				(font
@@ -8000,7 +8198,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 281.6352 149.86 0)
 			(effects
 				(font
@@ -8009,7 +8207,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.yageo.com/en/Chart/Download/pdf/CC0603KRX7R7BB104"
 			(at 280.67 146.05 0)
 			(effects
 				(font
@@ -8018,7 +8216,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "0.1 µF ±10% 16V Ceramic Capacitor X7R 0603 (1608 Metric)"
 			(at 280.67 146.05 0)
 			(effects
 				(font
@@ -8027,7 +8225,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "CC0603KRX7R7BB104"
 			(at 280.67 146.05 0)
 			(effects
 				(font
@@ -8045,7 +8243,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/yageo/CC0603KRX7R7BB104/302822"
+			(at 280.67 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "YAGEO"
+			(at 280.67 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "7"
+			(at 280.67 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "311-1088-1-ND"
 			(at 280.67 146.05 0)
 			(effects
 				(font
@@ -8095,7 +8320,7 @@
 				)
 			)
 		)
-		(property "Footprint" "VQFN24_RGE_TEX"
+		(property "Footprint" "Package_DFN_QFN:Texas_RGE0024C_VQFN-24-1EP_4x4mm_P0.5mm_EP2.1x2.1mm_ThermalVias"
 			(at 80.01 140.97 0)
 			(effects
 				(font
@@ -8115,7 +8340,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Hot Swap Controller 1 Channel General Purpose 24-VQFN (4x4)"
 			(at 80.01 140.97 0)
 			(effects
 				(font
@@ -8124,7 +8349,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "TPS259807ONRGER"
 			(at 80.01 140.97 0)
 			(effects
 				(font
@@ -8143,6 +8368,33 @@
 			)
 		)
 		(property "Vendor Link" ""
+			(at 80.01 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 80.01 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "196"
+			(at 80.01 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "296-TPS259807ONRGERCT-ND"
 			(at 80.01 140.97 0)
 			(effects
 				(font
@@ -8398,7 +8650,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "ESP32_Devkit_V1:WCAP-ASLI_6.3X5.5_DXL_"
 			(at 134.3152 71.12 0)
 			(effects
 				(font
@@ -8407,7 +8659,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.we-online.com/components/products/datasheet/865080343009.pdf"
 			(at 133.35 67.31 0)
 			(effects
 				(font
@@ -8416,7 +8668,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Polarized capacitor"
+		(property "Description" "100 µF 16 V Aluminum Electrolytic Capacitors Radial, Can - SMD 2000 Hrs @ 105°C"
 			(at 133.35 67.31 0)
 			(effects
 				(font
@@ -8425,7 +8677,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "865080343009"
 			(at 133.35 67.31 0)
 			(effects
 				(font
@@ -8443,7 +8695,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/w%C3%BCrth-elektronik/865080343009/5728014"
+			(at 133.35 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Würth Elektronik"
+			(at 133.35 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "24"
+			(at 133.35 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "732-8419-1-ND"
 			(at 133.35 67.31 0)
 			(effects
 				(font
@@ -8756,7 +9035,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 115.57 191.008 90)
 			(effects
 				(font
@@ -8765,7 +9044,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.te.com/usa-en/product-2176177-3.datasheet.pdf"
 			(at 115.57 189.23 0)
 			(effects
 				(font
@@ -8774,7 +9053,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "220 Ohms ±1% 0.2W, 1/5W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thick Film"
 			(at 115.57 189.23 0)
 			(effects
 				(font
@@ -8783,7 +9062,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "CRGH0603F220R"
 			(at 115.57 189.23 90)
 			(effects
 				(font
@@ -8801,7 +9080,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/te-connectivity-passive-product/CRGH0603F220R/7495060"
+			(at 115.57 189.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "TE Connectivity Passive Product"
+			(at 115.57 189.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "8"
+			(at 115.57 189.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "1712-CRGH0603F220RCT-ND"
 			(at 115.57 189.23 90)
 			(effects
 				(font
@@ -9049,7 +9355,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-4-5.08_1x04_P5.08mm_Horizontal"
 			(at 113.03 68.58 0)
 			(effects
 				(font
@@ -9095,6 +9401,15 @@
 			)
 		)
 		(property "Vendor Link" ""
+			(at 113.03 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" ""
 			(at 113.03 68.58 0)
 			(effects
 				(font
@@ -9218,7 +9533,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 199.39 200.66 0)
 			(effects
 				(font
@@ -9281,6 +9596,15 @@
 				(hide yes)
 			)
 		)
+		(property "Vendor Part Number" ""
+			(at 199.39 200.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "851ee2cf-52b1-4962-88bc-b62cf71394a0")
 		)
@@ -9322,7 +9646,7 @@
 				)
 			)
 		)
-		(property "Footprint" "VQFN24_RGE_TEX"
+		(property "Footprint" "Package_DFN_QFN:Texas_RGE0024C_VQFN-24-1EP_4x4mm_P0.5mm_EP2.1x2.1mm_ThermalVias"
 			(at 303.53 140.97 0)
 			(effects
 				(font
@@ -9342,7 +9666,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Hot Swap Controller 1 Channel General Purpose 24-VQFN (4x4)"
 			(at 303.53 140.97 0)
 			(effects
 				(font
@@ -9351,7 +9675,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "TPS259807ONRGER"
 			(at 303.53 140.97 0)
 			(effects
 				(font
@@ -9370,6 +9694,33 @@
 			)
 		)
 		(property "Vendor Link" ""
+			(at 303.53 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 303.53 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "196"
+			(at 303.53 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "296-TPS259807ONRGERCT-ND"
 			(at 303.53 140.97 0)
 			(effects
 				(font
@@ -9490,7 +9841,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 339.09 198.628 90)
 			(effects
 				(font
@@ -9499,7 +9850,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf"
 			(at 339.09 196.85 0)
 			(effects
 				(font
@@ -9508,7 +9859,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "300 Ohms ±0.1% 0.2W, 1/5W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thick Film"
 			(at 339.09 196.85 0)
 			(effects
 				(font
@@ -9517,7 +9868,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "ERJ-PB3B3000V"
 			(at 339.09 196.85 90)
 			(effects
 				(font
@@ -9535,7 +9886,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/panasonic-electronic-components/ERJ-PB3B3000V/6212693"
+			(at 339.09 196.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Panasonic Electronic Components"
+			(at 339.09 196.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "14"
+			(at 339.09 196.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "P19910CT-ND"
 			(at 339.09 196.85 90)
 			(effects
 				(font
@@ -9584,7 +9962,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 115.57 198.628 90)
 			(effects
 				(font
@@ -9593,7 +9971,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf"
 			(at 115.57 196.85 0)
 			(effects
 				(font
@@ -9602,7 +9980,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "300 Ohms ±0.1% 0.2W, 1/5W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thick Film"
 			(at 115.57 196.85 0)
 			(effects
 				(font
@@ -9611,7 +9989,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "ERJ-PB3B3000V"
 			(at 115.57 196.85 90)
 			(effects
 				(font
@@ -9629,7 +10007,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/panasonic-electronic-components/ERJ-PB3B3000V/6212693"
+			(at 115.57 196.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Panasonic Electronic Components"
+			(at 115.57 196.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "14"
+			(at 115.57 196.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "P19910CT-ND"
 			(at 115.57 196.85 90)
 			(effects
 				(font
@@ -9811,7 +10216,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ESP32-DEVKIT-V1:MODULE_ESP32_DEVKIT_V1"
+		(property "Footprint" "RF_Module:ESP32-C3-DevKitM-1"
 			(at 212.09 78.74 0)
 			(effects
 				(font
@@ -9830,7 +10235,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "ESP32 Devkit Module"
 			(at 212.09 78.74 0)
 			(effects
 				(font
@@ -9839,7 +10244,7 @@
 				(hide yes)
 			)
 		)
-		(property "Price" "None"
+		(property "Price" "400"
 			(at 212.09 78.74 0)
 			(effects
 				(font
@@ -9859,7 +10264,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "DOIT"
+		(property "Manufacturer" "Jellybean"
 			(at 212.09 78.74 0)
 			(effects
 				(font
@@ -9887,6 +10292,15 @@
 			)
 		)
 		(property "Vendor Link" ""
+			(at 212.09 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" ""
 			(at 212.09 78.74 0)
 			(effects
 				(font
@@ -10022,7 +10436,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 172.4152 149.86 0)
 			(effects
 				(font
@@ -10031,7 +10445,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.yageo.com/en/Chart/Download/pdf/CC0603KRX7R7BB104"
 			(at 171.45 146.05 0)
 			(effects
 				(font
@@ -10040,7 +10454,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "0.1 µF ±10% 16V Ceramic Capacitor X7R 0603 (1608 Metric)"
 			(at 171.45 146.05 0)
 			(effects
 				(font
@@ -10049,7 +10463,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "CC0603KRX7R7BB104"
 			(at 171.45 146.05 0)
 			(effects
 				(font
@@ -10067,7 +10481,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/yageo/CC0603KRX7R7BB104/302822"
+			(at 171.45 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "YAGEO"
+			(at 171.45 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "7"
+			(at 171.45 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "311-1088-1-ND"
 			(at 171.45 146.05 0)
 			(effects
 				(font
@@ -10116,7 +10557,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 339.09 204.978 90)
 			(effects
 				(font
@@ -10125,7 +10566,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf"
 			(at 339.09 203.2 0)
 			(effects
 				(font
@@ -10134,7 +10575,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "10 kOhms ±0.1% 0.2W, 1/5W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thick Film"
 			(at 339.09 203.2 0)
 			(effects
 				(font
@@ -10143,7 +10584,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "ERJ-PB3B1002V"
 			(at 339.09 203.2 90)
 			(effects
 				(font
@@ -10161,7 +10602,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/panasonic-electronic-components/ERJ-PB3B1002V/6212869"
+			(at 339.09 203.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Panasonic Electronic Components"
+			(at 339.09 203.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "14"
+			(at 339.09 203.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "P20086CT-ND"
 			(at 339.09 203.2 90)
 			(effects
 				(font
@@ -10211,7 +10679,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-4-5.08_1x04_P5.08mm_Horizontal"
 			(at 113.03 95.25 0)
 			(effects
 				(font
@@ -10257,6 +10725,15 @@
 			)
 		)
 		(property "Vendor Link" ""
+			(at 113.03 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" ""
 			(at 113.03 95.25 0)
 			(effects
 				(font
@@ -10314,7 +10791,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 58.1152 149.86 0)
 			(effects
 				(font
@@ -10323,7 +10800,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.yageo.com/en/Chart/Download/pdf/CC0603KRX7R7BB104"
 			(at 57.15 146.05 0)
 			(effects
 				(font
@@ -10332,7 +10809,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "0.1 µF ±10% 16V Ceramic Capacitor X7R 0603 (1608 Metric)"
 			(at 57.15 146.05 0)
 			(effects
 				(font
@@ -10341,7 +10818,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "CC0603KRX7R7BB104"
 			(at 57.15 146.05 0)
 			(effects
 				(font
@@ -10359,7 +10836,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/yageo/CC0603KRX7R7BB104/302822"
+			(at 57.15 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "YAGEO"
+			(at 57.15 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "7"
+			(at 57.15 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "311-1088-1-ND"
 			(at 57.15 146.05 0)
 			(effects
 				(font
@@ -10400,7 +10904,7 @@
 				)
 			)
 		)
-		(property "Value" "1k_0.1W_0603"
+		(property "Value" "1k_0.2W_0603"
 			(at 304.8 190.5 90)
 			(effects
 				(font
@@ -10408,7 +10912,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 310.388 190.5 90)
 			(effects
 				(font
@@ -10417,7 +10921,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf"
 			(at 308.61 190.5 0)
 			(effects
 				(font
@@ -10426,7 +10930,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "1 kOhms ±0.1% 0.2W, 1/5W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thick Film"
 			(at 308.61 190.5 0)
 			(effects
 				(font
@@ -10435,7 +10939,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "ERJ-PB3B1001V"
 			(at 308.61 190.5 90)
 			(effects
 				(font
@@ -10453,7 +10957,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/panasonic-electronic-components/ERJ-PB3B1001V/6212755"
+			(at 308.61 190.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Panasonic Electronic Components"
+			(at 308.61 190.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "14"
+			(at 308.61 190.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "P19972CT-ND"
 			(at 308.61 190.5 90)
 			(effects
 				(font
@@ -10634,7 +11165,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 229.87 204.978 90)
 			(effects
 				(font
@@ -10643,7 +11174,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf"
 			(at 229.87 203.2 0)
 			(effects
 				(font
@@ -10652,7 +11183,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "10 kOhms ±0.1% 0.2W, 1/5W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thick Film"
 			(at 229.87 203.2 0)
 			(effects
 				(font
@@ -10661,7 +11192,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "ERJ-PB3B1002V"
 			(at 229.87 203.2 90)
 			(effects
 				(font
@@ -10679,7 +11210,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/panasonic-electronic-components/ERJ-PB3B1002V/6212869"
+			(at 229.87 203.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Panasonic Electronic Components"
+			(at 229.87 203.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "14"
+			(at 229.87 203.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "P20086CT-ND"
 			(at 229.87 203.2 90)
 			(effects
 				(font
@@ -10794,7 +11352,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 115.57 204.978 90)
 			(effects
 				(font
@@ -10803,7 +11361,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf"
 			(at 115.57 203.2 0)
 			(effects
 				(font
@@ -10812,7 +11370,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "10 kOhms ±0.1% 0.2W, 1/5W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thick Film"
 			(at 115.57 203.2 0)
 			(effects
 				(font
@@ -10821,7 +11379,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "ERJ-PB3B1002V"
 			(at 115.57 203.2 90)
 			(effects
 				(font
@@ -10839,7 +11397,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/panasonic-electronic-components/ERJ-PB3B1002V/6212869"
+			(at 115.57 203.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Panasonic Electronic Components"
+			(at 115.57 203.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "14"
+			(at 115.57 203.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "P20086CT-ND"
 			(at 115.57 203.2 90)
 			(effects
 				(font
@@ -11020,7 +11605,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 229.87 198.628 90)
 			(effects
 				(font
@@ -11029,7 +11614,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf"
 			(at 229.87 196.85 0)
 			(effects
 				(font
@@ -11038,7 +11623,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "300 Ohms ±0.1% 0.2W, 1/5W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thick Film"
 			(at 229.87 196.85 0)
 			(effects
 				(font
@@ -11047,7 +11632,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "ERJ-PB3B3000V"
 			(at 229.87 196.85 90)
 			(effects
 				(font
@@ -11065,7 +11650,34 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.in/en/products/detail/panasonic-electronic-components/ERJ-PB3B3000V/6212693"
+			(at 229.87 196.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Panasonic Electronic Components"
+			(at 229.87 196.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "14"
+			(at 229.87 196.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "P19910CT-ND"
 			(at 229.87 196.85 90)
 			(effects
 				(font
@@ -11181,7 +11793,7 @@
 				)
 			)
 		)
-		(property "Footprint" "VQFN24_RGE_TEX"
+		(property "Footprint" "Package_DFN_QFN:Texas_RGE0024C_VQFN-24-1EP_4x4mm_P0.5mm_EP2.1x2.1mm_ThermalVias"
 			(at 194.31 140.97 0)
 			(effects
 				(font
@@ -11201,7 +11813,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Hot Swap Controller 1 Channel General Purpose 24-VQFN (4x4)"
 			(at 194.31 140.97 0)
 			(effects
 				(font
@@ -11210,7 +11822,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" ""
+		(property "Manufacturer Part Number" "TPS259807ONRGER"
 			(at 194.31 140.97 0)
 			(effects
 				(font
@@ -11229,6 +11841,33 @@
 			)
 		)
 		(property "Vendor Link" ""
+			(at 194.31 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 194.31 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "196"
+			(at 194.31 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor Part Number" "296-TPS259807ONRGERCT-ND"
 			(at 194.31 140.97 0)
 			(effects
 				(font
