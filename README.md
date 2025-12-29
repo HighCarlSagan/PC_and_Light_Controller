@@ -2,7 +2,7 @@
 
 ESP32-based remote control system for PC power management and room lighting via Tailscale.
 
-![Board Render](docs/images/board_render.png)
+![Board Render](hardware/Exports/UPS_Switch-top.png)
 
 ## Features
 

@@ -9867,7 +9867,7 @@
 				)
 			)
 		)
-		(property "Footprint" "RF_Module:ESP32-C3-DevKitM-1"
+		(property "Footprint" "Footprints:MODULE_ESP32_DEVKIT_V1"
 			(at 212.09 78.74 0)
 			(effects
 				(font

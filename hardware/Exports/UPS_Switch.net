@@ -1,7 +1,7 @@
 (export (version "E")
   (design
     (source "/home/carl/Projects/Hardware/PC_and_Light_Controller/hardware/UPS_Switch.kicad_sch")
-    (date "2025-12-28T23:20:21+0530")
+    (date "2025-12-30T04:16:25+0530")
     (tool "Eeschema 9.0.6")
     (sheet (number "1") (name "/") (tstamps "/")
       (title_block
@@ -676,7 +676,7 @@
       (tstamps "24915fd3-a8a2-408e-a5b3-dae475e6d51e"))
     (comp (ref "U1")
       (value "ESP32-DEVKIT-V1")
-      (footprint "RF_Module:ESP32-C3-DevKitM-1")
+      (footprint "Footprints:MODULE_ESP32_DEVKIT_V1")
       (description "ESP32 Devkit Module")
       (fields
         (field (name "Price") "400")
@@ -686,7 +686,7 @@
         (field (name "Vendor"))
         (field (name "Vendor Link"))
         (field (name "Vendor Part Number"))
-        (field (name "Footprint") "RF_Module:ESP32-C3-DevKitM-1")
+        (field (name "Footprint") "Footprints:MODULE_ESP32_DEVKIT_V1")
         (field (name "Datasheet"))
         (field (name "Description") "ESP32 Devkit Module"))
       (libsource (lib "ESP32-DEVKIT-V1") (part "ESP32-DEVKIT-V1") (description ""))
