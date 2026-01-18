@@ -1,0 +1,13 @@
+position = [ 72.695, 45.8825 ]
+is_flipped = false
+has_model = true
+is_tht_or_smd = true
+has_paste = false
+pad_type = "THT"
+shape = "CIRCLE"
+size = [ 2.0, 2.0 ]
+rotation = 4.71238898038469
+roundness = 0.25
+drill_shape = "OVAL"
+drill_size = [ 1.02, 1.02 ]
+fab_type = "NONE"
