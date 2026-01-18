@@ -2,7 +2,7 @@
 
 ESP32-based remote control system for PC power management and room lighting via Telegram Bot.
 
-![Board Render](hardware/Exports/UPS_Switch-top.png)
+![Board Render](hardware/Exports/PC_and_Light_Controller-top.png)
 
 ## Features
 
