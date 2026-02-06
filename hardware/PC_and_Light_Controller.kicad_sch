@@ -2044,6 +2044,113 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Mechanical:MountingHole_Pad"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "H"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MountingHole_Pad"
+				(at 0 4.445 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Mounting Hole with connection"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*Pad*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MountingHole_Pad_0_1"
+				(circle
+					(center 0 1.27)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "MountingHole_Pad_1_1"
+				(pin input line
+					(at 0 -2.54 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "TPS25980:TPS259807ONRGER"
 			(pin_names
 				(offset 0.254)
@@ -2870,6 +2977,18 @@
 		)
 	)
 	(rectangle
+		(start 168.91 222.25)
+		(end 246.38 245.11)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 0d3e0006-2e0b-4130-84d9-f01af25c7b25)
+	)
+	(rectangle
 		(start 88.9 62.23)
 		(end 153.67 92.71)
 		(stroke
@@ -2926,6 +3045,16 @@
 			)
 		)
 		(uuid "2c9fbe67-2cc5-4ed5-9b0d-61f56e97a2d4")
+	)
+	(text "MOUNTING HOLES"
+		(exclude_from_sim no)
+		(at 207.518 220.472 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "2eeea583-2605-4dfd-9970-3eed5993d0a5")
 	)
 	(text "LED CONTROL"
 		(exclude_from_sim no)
@@ -3156,6 +3285,12 @@
 		(uuid "7138c61e-ef23-4e62-bd17-99a2465d15b3")
 	)
 	(junction
+		(at 198.12 234.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "753187d0-2f2c-43de-b57a-ab133bf9d1c5")
+	)
+	(junction
 		(at 314.96 71.12)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3258,6 +3393,12 @@
 		(uuid "d08f8d34-ef15-4f24-b532-3029e7543647")
 	)
 	(junction
+		(at 207.01 234.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d4f83847-a641-4287-b63b-85194e71c918")
+	)
+	(junction
 		(at 303.53 92.71)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3292,6 +3433,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ddf4f0d2-c029-4185-8dfb-163b7d4deecc")
+	)
+	(junction
+		(at 215.9 234.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "df255f41-441f-4be6-b167-7512415c046c")
 	)
 	(junction
 		(at 351.79 203.2)
@@ -3356,16 +3503,12 @@
 		(uuid "33786b57-10b6-43b3-8e5a-6b30a9d8ecb2")
 	)
 	(no_connect
-		(at 196.85 76.2)
-		(uuid "398cdc1b-9186-4943-a9b2-09095ae27d38")
-	)
-	(no_connect
 		(at 227.33 96.52)
 		(uuid "3a8c00f4-a8fb-4c0c-baf6-b40262024eaa")
 	)
 	(no_connect
-		(at 227.33 78.74)
-		(uuid "60d0a6b9-e159-4957-95c2-fd06d01b60ba")
+		(at 227.33 81.28)
+		(uuid "57200cf6-bbf4-4232-941c-a2464db145e8")
 	)
 	(no_connect
 		(at 354.33 168.91)
@@ -3384,10 +3527,6 @@
 		(uuid "8c55ed4b-9b37-4b77-a3bc-4509452716cc")
 	)
 	(no_connect
-		(at 196.85 96.52)
-		(uuid "90eea34c-9922-4b42-a250-86f957617079")
-	)
-	(no_connect
 		(at 321.31 66.04)
 		(uuid "91523c63-fd6b-4170-b6cb-b2e31bdeb586")
 	)
@@ -3400,6 +3539,10 @@
 		(uuid "a44b0e39-c42f-4ac6-a85e-b5dfb4883614")
 	)
 	(no_connect
+		(at 227.33 86.36)
+		(uuid "b27c4235-5087-47b2-a57e-a403716bd391")
+	)
+	(no_connect
 		(at 196.85 60.96)
 		(uuid "bab13724-1c73-4fb6-8024-02ce80763667")
 	)
@@ -3410,6 +3553,10 @@
 	(no_connect
 		(at 227.33 53.34)
 		(uuid "bedafa46-8ace-4f4a-8ca6-b17d7a9143f7")
+	)
+	(no_connect
+		(at 227.33 83.82)
+		(uuid "c0538266-5ab0-4cdc-b01e-5931deaa279f")
 	)
 	(no_connect
 		(at 130.81 168.91)
@@ -3635,6 +3782,16 @@
 	)
 	(wire
 		(pts
+			(xy 207.01 234.95) (xy 207.01 237.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "10c2285a-64c1-469e-8aab-28cef6894fb5")
+	)
+	(wire
+		(pts
 			(xy 288.29 166.37) (xy 288.29 163.83)
 		)
 		(stroke
@@ -3672,6 +3829,16 @@
 			(type default)
 		)
 		(uuid "15afe84d-b80c-4dcb-9423-971c271b3dcf")
+	)
+	(wire
+		(pts
+			(xy 234.95 234.95) (xy 234.95 232.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "165de3bb-5db8-4e99-a6aa-5e59d5068633")
 	)
 	(wire
 		(pts
@@ -3935,6 +4102,16 @@
 	)
 	(wire
 		(pts
+			(xy 198.12 234.95) (xy 207.01 234.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "32f1d435-6976-435a-bf2a-f1512dce5569")
+	)
+	(wire
+		(pts
 			(xy 124.46 83.82) (xy 124.46 82.55)
 		)
 		(stroke
@@ -3942,6 +4119,16 @@
 			(type default)
 		)
 		(uuid "33e7c3f8-5374-42be-8714-d219d77e1ba8")
+	)
+	(wire
+		(pts
+			(xy 227.33 78.74) (xy 231.14 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "35298fbb-2ff1-431f-b05d-1df19909be13")
 	)
 	(wire
 		(pts
@@ -4045,6 +4232,16 @@
 	)
 	(wire
 		(pts
+			(xy 198.12 232.41) (xy 198.12 234.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "40e9f99a-ee95-47ac-8133-9994aed97da8")
+	)
+	(wire
+		(pts
 			(xy 64.77 163.83) (xy 64.77 151.13)
 		)
 		(stroke
@@ -4052,6 +4249,16 @@
 			(type default)
 		)
 		(uuid "414a2836-826e-484d-83f3-52afbd72e984")
+	)
+	(wire
+		(pts
+			(xy 215.9 234.95) (xy 234.95 234.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "415ddf80-2f81-4ab2-9599-dbd8240da3bf")
 	)
 	(wire
 		(pts
@@ -4072,16 +4279,6 @@
 			(type default)
 		)
 		(uuid "45953552-1855-4cf3-865a-c40224fec178")
-	)
-	(wire
-		(pts
-			(xy 227.33 86.36) (xy 231.14 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "462dfe7c-a142-4b8c-a009-77e8e5b1b6dc")
 	)
 	(wire
 		(pts
@@ -4112,6 +4309,16 @@
 			(type default)
 		)
 		(uuid "4836b361-9b53-487a-806e-41322b0a0358")
+	)
+	(wire
+		(pts
+			(xy 215.9 232.41) (xy 215.9 234.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "484dcb49-0547-4a4c-b5be-0a9faa1883e1")
 	)
 	(wire
 		(pts
@@ -4282,6 +4489,16 @@
 			(type default)
 		)
 		(uuid "5be79b85-8c23-4cb0-827b-f2b66a8be2c5")
+	)
+	(wire
+		(pts
+			(xy 193.04 96.52) (xy 196.85 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5d11bbd9-ec40-4d0e-baae-c6883503a67a")
 	)
 	(wire
 		(pts
@@ -4965,16 +5182,6 @@
 	)
 	(wire
 		(pts
-			(xy 227.33 81.28) (xy 231.14 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ac829384-53f7-4ec0-b16b-8286f87b390c")
-	)
-	(wire
-		(pts
 			(xy 308.61 194.31) (xy 308.61 196.85)
 		)
 		(stroke
@@ -5002,6 +5209,16 @@
 			(type default)
 		)
 		(uuid "ad89507d-3e9a-43a8-b3ba-43a340f45d0d")
+	)
+	(wire
+		(pts
+			(xy 179.07 232.41) (xy 179.07 234.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "adbb1d52-089d-494e-b564-9f38cf35f76b")
 	)
 	(wire
 		(pts
@@ -5052,16 +5269,6 @@
 			(type default)
 		)
 		(uuid "b59ecc5b-ce88-425b-bd02-2528b67a46c4")
-	)
-	(wire
-		(pts
-			(xy 227.33 83.82) (xy 231.14 83.82)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b8d4b1e6-56ba-4ae7-bf94-16f13e86b7cc")
 	)
 	(wire
 		(pts
@@ -5215,6 +5422,16 @@
 	)
 	(wire
 		(pts
+			(xy 207.01 234.95) (xy 215.9 234.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf67765c-1f8d-4c99-b6bc-ba0f9d7fa73e")
+	)
+	(wire
+		(pts
 			(xy 280.67 140.97) (xy 280.67 138.43)
 		)
 		(stroke
@@ -5335,6 +5552,16 @@
 	)
 	(wire
 		(pts
+			(xy 179.07 234.95) (xy 198.12 234.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dba6d9c4-e203-4263-93ff-f3e60771b849")
+	)
+	(wire
+		(pts
 			(xy 248.92 148.59) (xy 248.92 146.05)
 		)
 		(stroke
@@ -5342,6 +5569,16 @@
 			(type default)
 		)
 		(uuid "dc289643-b9c3-4609-ac20-14545b870fa9")
+	)
+	(wire
+		(pts
+			(xy 193.04 76.2) (xy 196.85 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ddbf479d-2839-4bbb-8bd3-f652c49a545b")
 	)
 	(wire
 		(pts
@@ -5934,12 +6171,12 @@
 		(uuid "c92fb8ca-543e-4e17-baf7-72480acc5d75")
 	)
 	(label "LED_3_CTRL"
-		(at 231.14 86.36 0)
+		(at 193.04 76.2 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "cc35535f-395b-4ed4-a00d-8a02bab2d162")
 	)
@@ -5974,7 +6211,7 @@
 		(uuid "d1adb1e7-b159-4888-a2eb-99b20032c750")
 	)
 	(label "LED_1_CTRL"
-		(at 231.14 81.28 0)
+		(at 231.14 78.74 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5994,12 +6231,12 @@
 		(uuid "ddc29554-b292-4107-af04-8c5e1adb96d5")
 	)
 	(label "LED_2_CTRL"
-		(at 231.14 83.82 0)
+		(at 193.04 96.52 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "e01256a0-78cd-40dd-a2b0-1bd851300482")
 	)
@@ -7195,6 +7432,72 @@
 		)
 	)
 	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 179.07 229.87 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "2d9d583e-cbe6-4ee2-a127-a025a556f361")
+		(property "Reference" "H1"
+			(at 181.61 227.3299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 170.942 225.552 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.2mm_M2_Pad_Via"
+			(at 179.07 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 179.07 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 179.07 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4031bb4c-6bfa-4a40-828b-cdfe957f5a38")
+		)
+		(instances
+			(project ""
+				(path "/4d5de43c-9edc-4367-abe9-fabe5381cc5c"
+					(reference "H1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 280.67 151.13 0)
 		(unit 1)
@@ -7376,6 +7679,72 @@
 			(project "UPS_Switch"
 				(path "/4d5de43c-9edc-4367-abe9-fabe5381cc5c"
 					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 234.95 229.87 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "3af6768f-a5fe-458e-8aca-e5b928693c1f")
+		(property "Reference" "H4"
+			(at 237.49 227.3299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 226.822 225.552 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.2mm_M2_Pad_Via"
+			(at 234.95 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 234.95 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 234.95 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a2c9fdbf-a21f-4d64-8f29-ad2db11554a9")
+		)
+		(instances
+			(project "PC_and_Light_Controller"
+				(path "/4d5de43c-9edc-4367-abe9-fabe5381cc5c"
+					(reference "H4")
 					(unit 1)
 				)
 			)
@@ -8018,7 +8387,7 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.com/en/products/detail/texas-instruments/TPS259807ONRGER/13174056"
 			(at 80.01 140.97 0)
 			(effects
 				(font
@@ -8202,6 +8571,72 @@
 			(project "UPS_Switch"
 				(path "/4d5de43c-9edc-4367-abe9-fabe5381cc5c"
 					(reference "#PWR025")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 198.12 229.87 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "764f2eb1-3fb4-4d84-96ef-b941c804fe70")
+		(property "Reference" "H2"
+			(at 200.66 227.3299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 189.992 225.552 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.2mm_M2_Pad_Via"
+			(at 198.12 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 198.12 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 198.12 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ec5de0c1-a81c-4862-9c8e-1f62fd6b1e28")
+		)
+		(instances
+			(project "PC_and_Light_Controller"
+				(path "/4d5de43c-9edc-4367-abe9-fabe5381cc5c"
+					(reference "H2")
 					(unit 1)
 				)
 			)
@@ -9344,7 +9779,7 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.com/en/products/detail/texas-instruments/TPS259807ONRGER/13174056"
 			(at 303.53 140.97 0)
 			(effects
 				(font
@@ -9710,6 +10145,72 @@
 		)
 	)
 	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 215.9 229.87 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "c43f41fe-7882-4510-83f5-23c4085ff8e8")
+		(property "Reference" "H3"
+			(at 218.44 227.3299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 207.772 225.552 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.2mm_M2_Pad_Via"
+			(at 215.9 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 215.9 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 215.9 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "25dd5bca-ed71-4a27-9e9d-0b041cfb590a")
+		)
+		(instances
+			(project "PC_and_Light_Controller"
+				(path "/4d5de43c-9edc-4367-abe9-fabe5381cc5c"
+					(reference "H3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 361.95 175.26 0)
 		(unit 1)
@@ -9942,7 +10443,7 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://robu.in/product/esp32-38pin-development-board-wifibluetooth-ultra-low-power-consumption-dual-core/"
 			(at 212.09 78.74 0)
 			(effects
 				(font
@@ -9951,7 +10452,7 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Part Number" ""
+		(property "Vendor Part Number" "ESP32-DEVKIT-V1"
 			(at 212.09 78.74 0)
 			(effects
 				(font
@@ -11244,6 +11745,72 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 207.01 237.49 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ef1a15bb-7f2b-4773-bf58-dddf35409d0c")
+		(property "Reference" "#PWR02"
+			(at 207.01 243.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 207.01 242.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 207.01 237.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 207.01 237.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 207.01 237.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ff7b358c-af06-43bb-af39-37a03df3b581")
+		)
+		(instances
+			(project "PC_and_Light_Controller"
+				(path "/4d5de43c-9edc-4367-abe9-fabe5381cc5c"
+					(reference "#PWR02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 57.15 151.13 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11381,7 +11948,7 @@
 				(hide yes)
 			)
 		)
-		(property "Vendor Link" ""
+		(property "Vendor Link" "https://www.digikey.com/en/products/detail/texas-instruments/TPS259807ONRGER/13174056"
 			(at 194.31 140.97 0)
 			(effects
 				(font
