@@ -1,290 +1,347 @@
 # PC & Light Controller
 
-ESP32-based remote control system for PC power management and room lighting via Telegram Bot.
+![Status](https://img.shields.io/badge/status-bringup-yellow)
+![Hardware](https://img.shields.io/badge/PCB-2--layer-blue)
+![Platform](https://img.shields.io/badge/MCU-ESP32-red)
+![License](https://img.shields.io/badge/license-CERN--OHL--P--2.0-green)
+![KiCad](https://img.shields.io/badge/KiCad-9.0-blueviolet)
 
-![Board Render](hardware/Exports/PC_and_Light_Controller-top.png)
+A single-board ESP32 controller that remotely actuates a PC's UPS power button via servo and switches three 5 V LED lighting channels via eFuses — all driven from a Telegram bot. Part of a larger homelab automation setup.
 
-## Features
+<p align="center">
+  <img src="hardware/Exports/PC_and_Light_Controller_Top.jpg" alt="PCB top render" width="48%">
+  <img src="hardware/Exports/PC_and_Light_Controller_Bot.jpg" alt="PCB bottom render" width="48%">
+</p>
 
-- **3x TPS259807ONRGER eFuse Switches**: DC load switching for IKEA LED lights (5V)
-- **Servo Motor Control**: Automated UPS power button actuation (SG90/MG90S)
-- **Remote Access**: Telegram Bot integration for secure remote control from anywhere
-- **Dual ESP32 Design**: Separate controllers for UPS and lighting
-- **Custom PCB**: 4-layer boards designed in KiCad (planned)
-- **Power**: Powered by custom 60W dual-rail PSU (3.3V/5V @ 6A each)
+---
 
-## Current Setup
+## Why I Built This
 
-### Hardware
-- **UPS Controller ESP32**: Controls servo motor for UPS button (GPIO 13)
-- **Lights Controller ESP32**: Controls 3 LED switches (GPIO 25, 26, 27)
+I needed a physical "finger" to press the UPS power button on my desk so I could wake the PC from anywhere — usually while travelling, sometimes just from another room — without opening the UPS chassis (which would void warranty) and without buying a generic smart-plug solution that wouldn't fit cleanly into the rest of my homelab.
 
-### Network
-- WiFi: Peela_Ghar
-- UPS Controller IP: 192.168.0.84
-- Lights Controller IP: 192.168.0.84 (when testing on same board)
+This board is the missing piece in a longer chain: once the UPS is on, my homelab handles the rest — Wake-on-LAN brings up the PC, Tailscale + SSH let me into the machine, and Home Assistant takes care of the rest of the room. The UPS button was the one stubbornly physical step left, and the LEDs were a natural extension once I had an ESP32 sitting there with spare GPIOs and a free 5 V rail.
 
-### Telegram Bot
-- Single bot controls both ESP32 devices
-- Command prefixes: `/ups_*` for UPS, `/lights_*` for lights
-- Commands: See [docs/commands/TELEGRAM_COMMANDS.md](docs/commands/TELEGRAM_COMMANDS.md)
-- Works from anywhere via Telegram (no port forwarding needed)
-- Security: Chat ID verification (only authorized user can control)
+A few things I deliberately wanted out of the project:
 
-## Quick Start
+- **Telegram bot integration without port forwarding** — the ESP32 polls outbound, no inbound ports exposed
+- **No new cloud dependency beyond Telegram** — everything else stays local to the homelab
+- **Clean integration with my existing 5 V/3.3 V bench supply** — no extra wall-warts
+- **A learning project for ESP32 + eFuse load switching** — TPS259807 with proper ILIM configuration
 
-### Using the Controllers
+---
 
-1. **Power on ESP32s** (via USB or 60W PSU when available)
-2. **Open Telegram** on your phone
-3. **Send commands** to your bot:
-   - `/ups_press` - Press UPS button
-   - `/ups_status` - Get UPS controller status
-   - `/lights_1_on` - Turn on light 1
-   - `/lights_all_off` - Turn all lights off
-   - `/lights_status` - Check all lights status
+## Initial Requirements
 
-### Flashing Firmware
+| # | Requirement | Target | Outcome |
+|---|---|---|---|
+| 1 | UPS power-button actuation | Non-invasive, preserves warranty | ✅ Servo-actuated push (no electrical mod to UPS) |
+| 2 | LED channels | 3 independently switched 5 V loads | ✅ 3× TPS259807 eFuse channels |
+| 3 | Per-channel current | ≥ 0.5 A per channel | ✅ ILIM set to 1 A per channel (headroom) |
+| 4 | Remote control | Internet-reachable, no port forwarding | ✅ Outbound Telegram bot polling |
+| 5 | Security | Only authorized user can issue commands | ✅ Chat ID allowlist verification |
+| 6 | Homelab integration | Works alongside WoL + SSH workflow | ✅ Sits as the "physical actuator" tier |
+| 7 | Power | Powered from existing dual-rail bench PSU | ✅ Single 5 V input |
+| 8 | MCU count | Single board, single MCU | ✅ One ESP32 DevKit V1 doing both jobs |
+| 9 | Variable per-channel current limit | Set in firmware/UI | ❌ **V1 has fixed 1 A** — V2 will use software-trim ILIM |
+| 10 | Local fallback (LAN-only mode) | Optional | ❌ Not in V1 — Telegram-only for now |
 
-**UPS Controller:**
-```bash
-cd firmware/ups-controller
-pio run --target upload
-pio device monitor
+---
+
+## Specifications
+
+| Parameter | Value |
+|---|---|
+| MCU | ESP32 DevKit V1 (ESP-WROOM-32) |
+| Input voltage | 5 V DC |
+| Light channels | 3× TPS259807 eFuse, ILIM = 1 A each |
+| Servo output | 1× PWM (5 V tolerant) |
+| Status indicators | 3× per-channel LEDs |
+| PCB | 2-layer FR-4, 1.6 mm |
+| Connectors | 1× 4-pin power input, 2× 6-pin output blocks |
+| Mounting | 4× corner holes |
+| Communication | WiFi 802.11 b/g/n + outbound HTTPS to Telegram |
+
+---
+
+## Architecture
+
+```
+                                   ┌──────────────────┐
+   Telegram Cloud  ◀──HTTPS poll──▶│   ESP32 DevKit   │
+                                   │   (single MCU)   │
+                                   └──┬─────┬─────┬───┘
+                                      │     │     │
+            GPIO ──────┬───────┬──────┘     │     │
+                       │       │            │     │
+                  ┌────▼─┐ ┌───▼──┐ ┌───────▼──┐  │
+                  │ EN1  │ │ EN2  │ │   EN3    │  │  PWM
+                  │TPS1  │ │TPS2  │ │   TPS3   │  │   │
+                  │259807│ │259807│ │  259807  │  │   ▼
+                  └──┬───┘ └──┬───┘ └────┬─────┘  │  Servo
+                     │        │          │        │   │
+                  Light 1  Light 2    Light 3     │   ▼
+                                                  │  UPS button
+                                                  └─ (mechanical press)
 ```
 
-**Lights Controller:**
-```bash
-cd firmware/lights-controller
-pio run --target upload
-pio device monitor
+A single ESP32 polls the Telegram bot every ~1 second, parses incoming commands, and dispatches to either:
+
+- **GPIO outputs** driving the EN pins of three TPS259807 eFuses (light channels), or
+- **A PWM channel** driving a servo whose horn physically presses the UPS power button.
+
+Per-channel status LEDs reflect the current state of each light. A chat-ID allowlist in firmware ensures only authorized users can issue commands.
+
+---
+
+## Why a Servo for the UPS Button?
+
+This is the unusual design choice and worth calling out: most projects that automate a button-press would either tap directly across the button contacts with a transistor, or use a relay. Both work — neither was acceptable here.
+
+The UPS is still under warranty. Opening it to solder anything across the button contacts would void that. A servo with a 3D-printed horn pressing the button externally is fully non-invasive — the UPS sees nothing electrically unusual, the warranty stays intact, and the same approach generalizes to any push-button I might want to actuate later (microwave, doorbell, whatever). It's a slightly larger mechanical solution, but mechanically and electrically clean.
+
+---
+
+## Key Components
+
+| Reference | Part | Function |
+|---|---|---|
+| U1 | ESP32 DevKit V1 | WiFi + dual-core MCU, both controllers in one |
+| U2, U3, U4 | TI TPS259807ONRGER | 5 V eFuse load switches with adjustable current limit |
+| D1, D2, D3 | LEDs (0603) | Per-channel status indicators |
+| C2, C5 | 100 µF / 16 V | Bulk decoupling on input + output |
+| C1, C3, C4 | 0.1 µF / 16 V | Local decoupling at each TPS259807 |
+| R1/R6/R10 | 220 Ω | LED current limiting |
+| R2/R7/R11 | 298 Ω | TPS259807 ILIM resistor (sets ~1 A current limit) |
+| R3/R8/R12 | 10 kΩ | TPS259807 EN pull-down |
+| R4/R5/R9/R13 | 1 kΩ | GPIO series resistors / servo signal |
+| J1 | 4-pin screw terminal | 5 V power input from external PSU |
+| J3, J4 | 6-pin screw terminals | Light output channels + servo header |
+
+---
+
+## Connector Pinout
+
+| Connector | Function |
+|---|---|
+| J1 | 5 V input from external PSU (V+, V+, GND, GND) |
+| J3 | Light outputs (channels 1–3) — V+ and GND pairs per channel |
+| J4 | Servo header + auxiliary outputs |
+
+> Detailed pin-by-pin assignments are on the PCB silkscreen and in `hardware/Exports/schematic.pdf`.
+
+---
+
+## Firmware
+
+### Architecture
+
+Single firmware image runs on one ESP32 and serves both the UPS-press and lights-switching commands. Internally the code is split into two logical modules under separate folders so the unit-tests stay focused, but only one binary gets flashed.
+
+| Layer | Library / Framework |
+|---|---|
+| Build system | PlatformIO |
+| Framework | Arduino-ESP32 |
+| Networking | WiFi.h + WiFiClientSecure |
+| Telegram client | UniversalTelegramBot |
+| Servo control | ESP32Servo |
+| JSON parsing | ArduinoJson |
+
+### Command interface
+
+Commands are split by prefix so both function groups remain logically separate:
+
+**UPS commands** (servo actuation):
+- `/ups_press` — Press the UPS power button
+- `/ups_status` — Get controller status
+- `/ups_help` — Show help
+
+**Lights commands**:
+- `/lights_<n>_on`, `/lights_<n>_off` — Control individual light (n = 1, 2, 3)
+- `/lights_all_on`, `/lights_all_off` — Bulk control
+- `/lights_status` — Report current state of all channels
+- `/lights_help` — Show help
+
+Full command reference: [`docs/commands/TELEGRAM_COMMANDS.md`](docs/commands/TELEGRAM_COMMANDS.md)
+
+### Security
+
+- **Chat ID allowlist** — only pre-registered Telegram chat IDs are honored, all others ignored
+- **Outbound-only networking** — no inbound ports, no port forwarding, no exposed services on the LAN
+- **TLS to Telegram** — all command traffic over HTTPS
+- **Secrets isolation** — WiFi credentials, bot token, and chat IDs live in `secrets.h`, gitignored, with an `.example` template committed
+
+### Repository layout for firmware
+
+```
+firmware/
+├── ups-controller/                 # UPS servo logic (build target 1)
+│   ├── include/
+│   │   ├── config.h                # Pin assignments, timing constants
+│   │   ├── secrets.h               # GITIGNORED — actual credentials
+│   │   └── secrets.h.example       # Template
+│   ├── src/main.cpp
+│   └── platformio.ini
+└── lights-controller/              # LED switching logic (build target 2)
+    ├── include/                    # Same structure as above
+    ├── src/main.cpp
+    └── platformio.ini
 ```
 
-**Note:** Hold BOOT button on ESP32 when you see "Connecting..." during upload.
+> The two folders compile to two separate firmware images in the V1 development setup. For deployment, both feature sets will be merged into a single combined firmware image for the production ESP32 — that consolidation is part of the deployment step.
 
-### First Time Setup
+---
 
-1. **Create Telegram Bot**
-   - Message @BotFather on Telegram
-   - Send `/newbot` and follow instructions
-   - Save the bot token
+## Setup & Deployment
 
-2. **Get Your Chat ID**
-   - Message @userinfobot on Telegram
-   - Note your Chat ID
+> **Status:** PCB delivered, awaiting assembly. Step-by-step setup will be added here once the board is soldered, flashed, and deployed in the rack.
 
-3. **Configure Secrets**
-```bash
-   cd firmware/ups-controller/include
-   cp secrets.h.example secrets.h
-   nano secrets.h
-   # Add your WiFi credentials, bot token, and Chat ID
-```
+This section will cover:
 
-4. **Flash Both ESP32s** (see Flashing Firmware above)
+1. Bill of materials acquisition
+2. SMD + through-hole assembly notes
+3. ESP32 first-flash procedure
+4. Telegram bot creation (BotFather workflow)
+5. Configuring `secrets.h` (WiFi, bot token, chat ID allowlist)
+6. Initial bringup test sequence (status LED check, channel-by-channel test, servo calibration)
+7. Mounting and mechanical alignment of the servo to the UPS button
+8. Integration into the homelab rack and final cabling
 
-## Hardware Specifications
+---
 
-### Main Components
+## Testing
 
-| Component | Specification | Purpose |
-|-----------|---------------|---------|
-| MCU | ESP32 WiFi Module (2x) | Main controllers |
-| Load Switches | 3x TPS259807ONRGER eFuse | LED switching (6A max each) |
-| Servo Motor | SG90 or MG90S | UPS button actuation |
-| Power Supply | 60W Dual-Rail PSU (5V/3.3V @ 6A) | System power |
-| PCB | 4-layer (planned) | Custom board |
+> Test results will be added in `docs/images/` and a summary table here once bringup is complete.
 
-### Pinout
+### Planned bringup test sequence
 
-**UPS Controller ESP32:**
-```
-GPIO 2  : Built-in LED (status indicator)
-GPIO 13 : Servo PWM signal
-VIN     : 5V from PSU
-GND     : Common ground
-```
+| Step | Test | Pass criteria |
+|---|---|---|
+| 1 | Visual inspection | No solder bridges, all parts present, polarized parts oriented correctly |
+| 2 | Power-on, no firmware | 5 V rail clean, no smoke, current draw < 50 mA at idle |
+| 3 | Firmware flash | ESP32 enumerates, serial console prints boot banner |
+| 4 | WiFi association | Connects to configured SSID, IP assigned |
+| 5 | Telegram heartbeat | Bot responds to `/lights_help` and `/ups_help` |
+| 6 | Light channel test (no load) | Each EN GPIO toggles its eFuse; status LED follows; no output current with no load attached |
+| 7 | Light channel test (with load) | Each channel drives an LED strip up to ~0.5 A; status LED on; eFuse cool |
+| 8 | Light channel overcurrent test | Force ~1.2 A on one channel, eFuse trips, channel recovers after re-enable |
+| 9 | Servo sweep | Manual `/ups_press` triggers full press-and-release cycle, audible click on UPS |
+| 10 | Soak test | All three lights on + occasional servo press, 1 hour, no thermal issues |
 
-**Lights Controller ESP32:**
-```
-GPIO 2  : Built-in LED (status indicator)
-GPIO 25 : TPS259807 #1 Enable (LED switch 1)
-GPIO 26 : TPS259807 #2 Enable (LED switch 2)
-GPIO 27 : TPS259807 #3 Enable (LED switch 3)
-VIN     : 5V from PSU
-GND     : Common ground
-```
+### Results
 
-### Schematic
+*To be filled in after bringup.*
 
-[Download PDF](hardware/exports/schematic.pdf) (Coming soon)
+---
 
-## Firmware Architecture
+## Hardware
 
-### Technology Stack
+### PCB
 
-- **Framework**: Arduino (via PlatformIO)
-- **Networking**: WiFi + Telegram Bot API
-- **Libraries**:
-  - WiFi.h (ESP32 WiFi)
-  - WiFiClientSecure.h (HTTPS for Telegram)
-  - UniversalTelegramBot (Telegram API wrapper)
-  - ESP32Servo (Servo motor control)
-  - ArduinoJson (JSON parsing)
+- 2-layer FR-4
+- 1.6 mm thickness
+- 1 oz copper
+- ENIG or HASL lead-free
+- Designed in KiCad 9.0
+- Compatible with JLCPCB, PCBWay, OSHPark, etc.
 
-### Command Interface
+### Manufacturing files
 
-Both ESP32s poll the same Telegram bot every 1 second. Each responds only to its command prefix:
+- Gerbers + drill files: [`hardware/Exports/Gerbers/`](hardware/Exports/Gerbers/)
+- Zipped gerbers (drag-and-drop into fab portals): `hardware/Exports/pc_and_light_controller_gerbers.zip`
+- Interactive BOM: `hardware/Exports/ibom.html`
+- BOM CSV: `hardware/Exports/UPS_Switch_BoM.csv`
+- Schematic PDF: `hardware/Exports/schematic.pdf`
 
-**UPS Controller Commands:**
-- `/ups_press` - Press UPS power button
-- `/ups_status` - Get controller status
-- `/ups_help` - Show help
-
-**Lights Controller Commands:**
-- `/lights_1_on`, `/lights_1_off` - Control light 1
-- `/lights_2_on`, `/lights_2_off` - Control light 2
-- `/lights_3_on`, `/lights_3_off` - Control light 3
-- `/lights_all_on`, `/lights_all_off` - Control all lights
-- `/lights_status` - Get all lights status
-- `/lights_help` - Show help
-
-See [TELEGRAM_COMMANDS.md](docs/commands/TELEGRAM_COMMANDS.md) for complete reference.
-
-## Testing Status
-
-**Firmware:** ✅ Complete and Tested
-- ✅ WiFi connection
-- ✅ Telegram bot communication (both ESP32s)
-- ✅ Command parsing and execution
-- ✅ Security (Chat ID verification)
-- ✅ Command prefix isolation
-- ✅ Remote control from anywhere via Telegram
-
-**Hardware:** 🔄 In Progress
-- ⏳ Awaiting servo motor (SG90)
-- ⏳ Awaiting TPS259807 chips
-- ⏳ PCB design (KiCad schematic)
-- ⏳ PCB manufacturing
-- ⏳ Final assembly
-
-## PCB Manufacturing
-
-### Gerber Files
-Gerbers for manufacturing will be in [hardware/exports/gerbers/](hardware/exports/gerbers/) (Coming soon)
-
-### BOM
-See [hardware/bom/bom.csv](hardware/bom/bom.csv) for complete parts list (Coming soon)
-
-### Recommended Manufacturers
-- JLCPCB (4-layer, ENIG finish recommended)
-- PCBWay
-
-## Development Workflow
-
-### KiCad → Gerbers
-```bash
-cd hardware/kicad
-# Design in KiCad
-# File → Plot → Generate Gerbers
-# Move to hardware/exports/gerbers/
-```
-
-### Code → Flash
-```bash
-cd firmware/ups-controller  # or lights-controller
-pio run --target upload
-pio device monitor
-```
-
-### Update Documentation
-```bash
-# Take photos of assembled board
-# Place in docs/images/
-# Update README.md
-git add .
-git commit -m "docs: add assembly photos"
-git push
-```
-
-## Project Status
-
-**Software/Firmware:**
-- [x] Telegram bot integration
-- [x] UPS controller firmware
-- [x] Lights controller firmware
-- [x] Command parsing and security
-- [x] Testing and validation
-- [x] Documentation
-
-**Hardware:**
-- [ ] Schematic design (KiCad)
-- [ ] PCB layout
-- [ ] Order components
-- [ ] Order PCBs
-- [ ] Assembly
-- [ ] Hardware testing
-- [ ] Enclosure design (FreeCAD)
+---
 
 ## Repository Structure
+
 ```
 PC_and_Light_Controller/
-├── firmware/
-│   ├── ups-controller/        # UPS ESP32 firmware
-│   │   ├── src/main.cpp
-│   │   ├── include/
-│   │   │   ├── config.h
-│   │   │   ├── secrets.h         (gitignored)
-│   │   │   └── secrets.h.example
-│   │   └── platformio.ini
-│   └── lights-controller/     # Lights ESP32 firmware
-│       ├── src/main.cpp
-│       ├── include/
-│       │   ├── config.h
-│       │   ├── secrets.h         (gitignored)
-│       │   └── secrets.h.example
-│       └── platformio.ini
-├── hardware/
-│   ├── kicad/                 # KiCad schematic & PCB
-│   ├── exports/               # Gerbers, PDFs, renders
-│   └── bom/                   # Bill of materials
 ├── docs/
 │   ├── commands/
-│   │   └── TELEGRAM_COMMANDS.md
-│   └── images/
-├── .gitignore
+│   │   └── TELEGRAM_COMMANDS.md         # Full command reference
+│   ├── Flashing_Guide_Mini.md           # ESP32 flash quick reference
+│   ├── images/                          # Photos & screenshots
+│   └── pinout.ini                       # Pin assignment reference
+├── firmware/
+│   ├── ups-controller/                  # Servo / UPS button firmware module
+│   └── lights-controller/               # Lights / eFuse firmware module
+├── hardware/
+│   ├── Exports/                         # Gerbers, BOM, renders, schematic
+│   ├── Libraries/                       # Custom KiCad symbols, footprints, 3D models
+│   ├── PC_and_Light_Controller.kicad_pro
+│   ├── PC_and_Light_Controller.kicad_sch
+│   └── PC_and_Light_Controller.kicad_pcb
+├── enclosure/
+│   └── docs/                            # FreeCAD / Blender enclosure work
 ├── LICENSE
 └── README.md
 ```
 
-## Photos
+---
 
-*Coming soon after hardware assembly*
+## When to Use This
 
-## Security
+**Good fit:**
+- Remote-pressing a physical button you can't or won't open
+- Switching small 5 V DC loads (LED strips, fans, low-power lighting) with overcurrent protection
+- Building blocks for a homelab automation tier where outbound-only networking is desired
+- A learning vehicle for ESP32 + Telegram + eFuse load switching
 
-- **Chat ID Verification**: Only authorized Telegram user can send commands
-- **No Port Forwarding**: Telegram handles all networking securely
-- **HTTPS**: All communication with Telegram uses TLS encryption
-- **Secrets Management**: Credentials stored in gitignored `secrets.h` files
-
-## License
-
-- **Hardware**: [CERN-OHL-P v2](LICENSE)
-- **Firmware**: MIT License
-
-## Contributing
-
-This is a personal project, but feel free to open issues or submit PRs if you find bugs or have suggestions.
-
-## Author
-
-**Mak** - [HighCarlSagan](https://github.com/HighCarlSagan)
-
-Part of my home automation & hardware design projects. Check out my other repos:
-- [Universal 60W PSU](https://github.com/HighCarlSagan/60w-dual-rail-psu)
-- [Satellite Power Sizing Tool](...)
+**Not a good fit:**
+- Mains-voltage switching (use a proper relay board with isolation)
+- High-current loads above ~1 A per channel (the V1 ILIM cap)
+- Time-critical control where ~1 second polling latency matters
+- Air-gapped networks (V1 is Telegram-dependent — V2 will add a local-only path)
 
 ---
 
-**⚠️ Safety Note**: This system interfaces with mains-powered equipment (UPS). Ensure proper isolation and safety measures during installation.
+## Roadmap
+
+### V1 (current)
+- ✅ Hardware design complete
+- ✅ Firmware logic written and tested on dev boards
+- 🔄 PCB assembly pending
+- 🔄 First-deployment bringup pending
+
+### V2 wishlist
+- Variable per-channel current limit (digitally trimmable ILIM)
+- Local-only control path (MQTT to homelab broker, Telegram becomes one of multiple frontends)
+- Per-channel current measurement (INA-class shunt monitor) for telemetry back to homelab
+- Combined unified firmware image instead of two-folder dev split
+- Onboard 5 V regulation so the board can be powered from a wider input range
+- Status display (small OLED) showing channel state and last command
+
+---
+
+## Security Note
+
+This board exists inside a private homelab network and is gated by a Telegram chat-ID allowlist. As deployed:
+
+- Network-side identifiers (SSID, IPs, MACs) are intentionally **not** committed to this repo
+- All credentials live in `secrets.h` files which are gitignored — only `.example` templates ship
+- The Telegram bot token is the principal credential; treat it like a password
+
+If you fork this and deploy it on your own network, replace every value in `secrets.h.example` with your own and never commit a real `secrets.h`.
+
+---
+
+## License
+
+- **Hardware**: [CERN-OHL-P-2.0](LICENSE) (Permissive)
+- **Firmware**: MIT
+
+---
+
+## Related Projects
+
+- [Dual_Power_Supply](https://github.com/HighCarlSagan/Dual_Power_Supply) — provides the 5 V rail that powers this board
+- [Carls_Homelab](https://github.com/HighCarlSagan/Carls_Homelab) — the rest of the homelab stack this integrates with
+
+---
+
+## Author
+
+**Mak (Mayank Shrivastava)**
+[github.com/HighCarlSagan](https://github.com/HighCarlSagan)
