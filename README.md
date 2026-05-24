@@ -34,16 +34,16 @@ A few things I deliberately wanted out of the project:
 
 | # | Requirement | Target | Outcome |
 |---|---|---|---|
-| 1 | UPS power-button actuation | Non-invasive, preserves warranty | ✅ Servo-actuated push (no electrical mod to UPS) |
-| 2 | LED channels | 3 independently switched 5 V loads | ✅ 3× TPS259807 eFuse channels |
-| 3 | Per-channel current | ≥ 0.5 A per channel | ✅ ILIM set to 1 A per channel (headroom) |
-| 4 | Remote control | Internet-reachable, no port forwarding | ✅ Outbound Telegram bot polling |
-| 5 | Security | Only authorized user can issue commands | ✅ Chat ID allowlist verification |
-| 6 | Homelab integration | Works alongside WoL + SSH workflow | ✅ Sits as the "physical actuator" tier |
-| 7 | Power | Powered from existing dual-rail bench PSU | ✅ Single 5 V input |
-| 8 | MCU count | Single board, single MCU | ✅ One ESP32 DevKit V1 doing both jobs |
-| 9 | Variable per-channel current limit | Set in firmware/UI | ❌ **V1 has fixed 1 A** — V2 will use software-trim ILIM |
-| 10 | Local fallback (LAN-only mode) | Optional | ❌ Not in V1 — Telegram-only for now |
+| 1 | UPS power-button actuation | Non-invasive, preserves warranty | Servo-actuated push (no electrical mod to UPS) |
+| 2 | LED channels | 3 independently switched 5 V loads | 3× TPS259807 eFuse channels |
+| 3 | Per-channel current | ≥ 0.5 A per channel | ILIM set to 1 A per channel (headroom) |
+| 4 | Remote control | Internet-reachable, no port forwarding | Outbound Telegram bot polling |
+| 5 | Security | Only authorized user can issue commands | Chat ID allowlist verification |
+| 6 | Homelab integration | Works alongside WoL + SSH workflow | Sits as the "physical actuator" tier |
+| 7 | Power | Powered from existing dual-rail bench PSU | Single 5 V input |
+| 8 | MCU count | Single board, single MCU | One ESP32 DevKit V1 doing both jobs |
+| 9 | Variable per-channel current limit | Set in firmware/UI | **V1 has fixed 1 A** — V2 will use software-trim ILIM |
+| 10 | Local fallback (LAN-only mode) | Optional | Not in V1 — Telegram-only for now |
 
 ---
 
